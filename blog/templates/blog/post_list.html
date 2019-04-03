@@ -1,18 +1,12 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Django Tutorial</title>
-</head>
-<body>
-  <h1>Flávio Visetti - Blog Post</h1>
-  {% for post in posts %}
-    <div>
-      <h1><a href="">{{ post.title }}</a></h1>
-      <p>{{ post.text|linebreaks }}</p>
-      <p>Publicado em: {{ post.published_date }}</p>
-    </div>
-  {% endfor %}
-</body>
-</html>
+{% extends 'blog/base.html' %}
+{% block content %}
+{% for post in posts %}
+<div class="post">
+  <h3><a href="">{{ post.title }}</a></h3>
+  <div class="date">{{ post.published_date }}</div>
+  <hr>
+  <p>{{ post.text|linebreaksbr }}</p>
+  <hr>
+</div>
+{% endfor %}
+{% endblock %}
